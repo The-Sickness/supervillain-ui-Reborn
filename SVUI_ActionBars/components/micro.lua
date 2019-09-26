@@ -43,8 +43,7 @@ local function RefreshMicrobar()
 	local buttonSize =  SV.db.ActionBars.Micro.buttonsize or 30;
 	local spacing =  SV.db.ActionBars.Micro.buttonspacing or 1;
 	local barWidth = (buttonSize + spacing) * 13;
-	SVUI_MicroBar_MOVE:SetSize(barWidth, buttonSize)
-	SVUI_MicroBar:SetAllPoints(SVUI_MicroBar_MOVE)
+	SVUI_MicroBar:SetSize(barWidth, buttonSize)
 	for i=1,13 do
 		local data = MOD.media.microMenuCoords[i]
 		local button = _G[data[1]]
@@ -75,7 +74,7 @@ local SVUIMicroButton_SetNormal = function()
 	MainMenuMicroButton.overlay:SetFrameStrata("HIGH")
 	MainMenuBarPerformanceBar:Hide()
 	MainMenuBarDownload:Hide()
-	--HelpMicroButton:Show()
+	HelpMicroButton:Show()
 end 
 
 local SVUIMicroButtonsParent = function(self)
@@ -191,7 +190,7 @@ function MOD:InitializeMicroBar()
 	NewHook('UpdateMicroButtonsParent', SVUIMicroButtonsParent)
 	NewHook('MoveMicroButtons', RefreshMicrobar)
 	NewHook('UpdateMicroButtons', MOD.UpdateMicroButtons)
-	NewHook('GuildMicroButton_UpdateTabard', MOD.UpdateMicroButtons)
+	--NewHook('GuildMicroButton_UpdateTabard', MOD.UpdateMicroButtons)
 
 	SVUIMicroButtonsParent(microBar)
 	SVUIMicroButton_SetNormal()
