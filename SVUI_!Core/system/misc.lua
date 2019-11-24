@@ -429,8 +429,9 @@ do
 	end
 
 	function CreateCharacterToggles()
-		local BtnStrata = SideDressUpModelResetButton:GetFrameStrata();
-		local BtnLevel = SideDressUpModelResetButton:GetFrameLevel();
+	--[[
+		--local BtnStrata = SideDressUpModelResetButton:GetFrameStrata();
+		--local BtnLevel = SideDressUpModelResetButton:GetFrameLevel();
 
 		local tabard1 = CreateSimpleButton(DressUpFrame, "Tabard", "BOTTOMLEFT", 12, 12, 80, 22, "")
 		tabard1:SetScript("OnClick", function()
@@ -438,8 +439,8 @@ do
 		end)
 
 		local tabard2 = CreateSimpleButton(SideDressUpFrame, "Tabard", "BOTTOMLEFT", 14, 20, 60, 22, "")
-		tabard2:SetFrameStrata(BtnStrata);
-		tabard2:SetFrameLevel(BtnLevel);
+		--tabard2:SetFrameStrata(BtnStrata);
+		--tabard2:SetFrameLevel(BtnLevel);
 		tabard2:SetScript("OnClick", function()
 			SideDressUpModel:UndressSlot(19)
 		end)
@@ -453,14 +454,15 @@ do
 		end)
 
 		local nude2 = CreateSimpleButton(SideDressUpFrame, "Nude", "BOTTOMRIGHT", -18, 20, 60, 22, "")
-		nude2:SetFrameStrata(BtnStrata);
-		nude2:SetFrameLevel(BtnLevel);
+		--nude2:SetFrameStrata(BtnStrata);
+		--nude2:SetFrameLevel(BtnLevel);
 		nude2:SetScript("OnClick", function()
 			SideDressUpModelResetButton:Click()
 			for i = 1, 19 do
 				SideDressUpModel:UndressSlot(i)
 			end
 		end)
+		]]--
 
 		--[[
 		HelmetToggle = CreateFrame('CheckButton', nil, CharacterModelFrame, "OptionsCheckButtonTemplate")
@@ -491,7 +493,7 @@ do
 
 		HelmetToggle:SetScript('OnMouseDown', MouseEventHandler)
 		CloakToggle:SetScript('OnMouseDown', MouseEventHandler)
-		
+
 		CharacterModelFrame:HookScript("OnShow", SetVanityPlacement)
 		]]--
 	end

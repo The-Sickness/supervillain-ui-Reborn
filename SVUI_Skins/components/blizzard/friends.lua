@@ -14,8 +14,8 @@ local SV = _G['SVUI'];
 local L = SV.L;
 local MOD = SV.Skins;
 local Schema = MOD.Schema;
---[[ 
-########################################################## 
+--[[
+##########################################################
 HELPERS
 ##########################################################
 ]]--
@@ -78,38 +78,38 @@ local FriendsFrameButtons = {
 };
 
 local function TabCustomHelper(this)
-	if not this then return end 
-	for _,prop in pairs(FrameSuffix) do 
+	if not this then return end
+	for _,prop in pairs(FrameSuffix) do
 		local frame = _G[this:GetName()..prop]
 		frame:SetTexture("")
-	end 
+	end
 	this:GetHighlightTexture():SetTexture("")
 	this.backdrop = CreateFrame("Frame", nil, this)
 	this.backdrop:SetStyle("!_Frame", "Default")
 	this.backdrop:SetFrameLevel(this:GetFrameLevel()-1)
 	this.backdrop:SetPoint("TOPLEFT", 3, -8)
 	this.backdrop:SetPoint("BOTTOMRIGHT", -6, 0)
-end 
+end
 
 local function ChannelList_OnUpdate()
-	for i = 1, MAX_DISPLAY_CHANNEL_BUTTONS do 
+	for i = 1, MAX_DISPLAY_CHANNEL_BUTTONS do
 		local btn = _G["ChannelButton"..i]
 		if btn then
 			btn:RemoveTextures()
 			btn:SetHighlightTexture("Interface\\PaperDollInfoFrame\\UI-Character-Tab-Highlight")
 			_G["ChannelButton"..i.."Text"]:SetFontObject(SVUI_Font_Default)
-		end 
-	end 
-end 
---[[ 
-########################################################## 
+		end
+	end
+end
+--[[
+##########################################################
 FRIENDSFRAME MODR
 ##########################################################
 ]]--FriendsFrameBattlenetFrameScrollFrame
 local function FriendsFrameStyle()
 	--print('test FriendsFrameStyle')
 	if SV.db.Skins.blizzard.enable ~= true or SV.db.Skins.blizzard.friends ~= true then
-		 return 
+		 return
 	end
 
 	SV.API:Set("Window", FriendsFrame)
@@ -135,33 +135,33 @@ local function FriendsFrameStyle()
 		if(_G[frame]) then
 			_G[frame]:SetStyle("Button")
 		end
-	end 
+	end
 
 	-- for c, texture in pairs(FriendsFrameList2)do
 	-- 	 _G[texture]:Die()
-	-- end 
+	-- end
 
 	for _, frame in pairs(FriendsFrameList1) do
 		if(_G[frame]) then
 			_G[frame]:RemoveTextures(true)
 		end
-	end 
+	end
 
-	for i = 1, FriendsFrame:GetNumRegions()do 
+	for i = 1, FriendsFrame:GetNumRegions()do
 		local a1 = select(i, FriendsFrame:GetRegions())
 		if a1:GetObjectType() == "Texture"then
 			a1:SetTexture("")
 			a1:SetAlpha(0)
-		end 
+		end
 	end
 
-	FriendsFrameFriendsScrollFrame:DisableDrawLayer("BACKGROUND")
+	--FriendsFrameFriendsScrollFrame:DisableDrawLayer("BACKGROUND")
 
 	SV.API:Set("ScrollBar", FriendsFrameFriendsScrollFrame, 5)
 	SV.API:Set("ScrollBar", WhoListScrollFrame, 5)
 	SV.API:Set("ScrollBar", ChannelFrame.ChannelRoster.ScrollFrame, 5)
 	SV.API:Set("ScrollBar", QuickJoinScrollFrame, 5)
-	
+
 	FriendsFrameStatusDropDown:SetPoint('TOPLEFT', FriendsTabHeader, 'TOPLEFT', 0, -27)
 	SV.API:Set("DropDown", FriendsFrameStatusDropDown, 70)
 	FriendsFrameBattlenetFrame:RemoveTextures()
@@ -169,7 +169,7 @@ local function FriendsFrameStyle()
 	FriendsFrameBattlenetFrame:SetPoint('TOPLEFT', FriendsFrameStatusDropDown, 'TOPRIGHT', 0, -1)
 	FriendsFrameBattlenetFrame:SetStyle("!_Frame", "Inset")
 	FriendsFrameBattlenetFrame:SetBackdropColor(0,0,0,0.8)
-	
+
 	-- FriendsFrameBattlenetFrame.BroadcastButton:GetNormalTexture():SetTexCoord(.28, .72, .28, .72)
 	-- FriendsFrameBattlenetFrame.BroadcastButton:GetPushedTexture():SetTexCoord(.28, .72, .28, .72)
 	-- FriendsFrameBattlenetFrame.BroadcastButton:GetHighlightTexture():SetTexCoord(.28, .72, .28, .72)
@@ -183,23 +183,23 @@ local function FriendsFrameStyle()
 	FriendsFrameBattlenetFrame.BroadcastButton:SetScript('OnClick', function()
 		SV:StaticPopup_Show("SET_BN_BROADCAST")
 	end)
-	
+
 	QuickJoinFrame.JoinQueueButton:RemoveTextures();
 	QuickJoinFrame.JoinQueueButton:SetStyle("Button");
 	QuickJoinFrame.JoinQueueButton:ClearAllPoints();
 	QuickJoinFrame.JoinQueueButton:SetPoint("BOTTOMRIGHT", QuickJoinFrame, "BOTTOMRIGHT", -6, 2);
-	
+
 	FriendsFrameBattlenetFrame.Tag:SetFontObject(SVUI_Font_Narrator)
 	AddFriendNameEditBox:SetStyle("Editbox")
 	AddFriendFrame:SetStyle("!_Frame", "Transparent", true)
-	ScrollOfResurrectionSelectionFrame:SetStyle("!_Frame", 'Transparent')
-	ScrollOfResurrectionSelectionFrameList:SetStyle("!_Frame", 'Default')
+	--ScrollOfResurrectionSelectionFrame:SetStyle("!_Frame", 'Transparent')
+	--ScrollOfResurrectionSelectionFrameList:SetStyle("!_Frame", 'Default')
 	SV.API:Set("ScrollBar", ScrollOfResurrectionSelectionFrameListScrollFrame, 4)
-	ScrollOfResurrectionSelectionFrameTargetEditBox:SetStyle("Editbox")
-	FriendsFrameBroadcastInput:SetStyle("Frame", "Default")
+	--ScrollOfResurrectionSelectionFrameTargetEditBox:SetStyle("Editbox")
+	--FriendsFrameBroadcastInput:SetStyle("Frame", "Default")
 	--ChannelFrameDaughterFrameChannelName:SetStyle("Frame", "Default")
 	--ChannelFrameDaughterFrameChannelPassword:SetStyle("Frame", "Default")
-	
+
 	ChannelFrame:HookScript("OnShow", function()
 		ChannelFrame.ChannelRoster.ScrollFrame.scrollBar:RemoveTextures()
 	end)
@@ -211,7 +211,7 @@ local function FriendsFrameStyle()
 	WhoFrame:HookScript("OnShow", function()
 		ChannelFrame.ChannelRoster.ScrollFrame.scrollBar:RemoveTextures()
 	end)
-
+--[[
 	hooksecurefunc("FriendsFrame_OnEvent", function()
 		WhoListScrollFrameScrollBar:RemoveTextures()
 	end)
@@ -223,17 +223,17 @@ local function FriendsFrameStyle()
 
 	for i = 1, 4 do
 		 SV.API:Set("Tab", _G["FriendsFrameTab"..i])
-	end 
+	end
 
 	for i = 1, 3 do
 		 TabCustomHelper(_G["FriendsTabHeaderTab"..i])
-	end 
+	end
 
 	--hooksecurefunc("ChannelList_Update", ChannelList_OnUpdate)
 	FriendsFriendsFrame:SetStyle("Frame", 'Inset')
 
-	_G["FriendsFriendsFrame"]:RemoveTextures()
-	_G["FriendsFriendsList"]:RemoveTextures()
+	--_G["FriendsFriendsFrame"]:RemoveTextures()
+	--_G["FriendsFriendsList"]:RemoveTextures()
 	--_G["FriendsFriendsNoteFrame"]:RemoveTextures()
 
 	_G["FriendsFriendsSendRequestButton"]:SetStyle("Button")
@@ -242,7 +242,7 @@ local function FriendsFrameStyle()
 	FriendsFriendsList:SetStyle("Editbox")
 	--FriendsFriendsNoteFrame:SetStyle("Editbox")
 	SV.API:Set("DropDown", FriendsFriendsFrameDropDown, 150)
-
+]]--
 
 	--BNConversationInviteDialog:RemoveTextures()
 	--BNConversationInviteDialog:SetStyle("Frame", 'Transparent')
@@ -252,7 +252,8 @@ local function FriendsFrameStyle()
 	--BNConversationInviteDialogCancelButton:SetStyle("Button")
 	--for i = 1, BN_CONVERSATION_INVITE_NUM_DISPLAYED do
 	--	 _G["BNConversationInviteDialogListFriend"..i].checkButton:SetStyle("CheckButton")
-	--end 
+	--end
+	--[[
 	FriendsTabHeaderSoRButton:SetStyle("!_Frame", 'Default')
 	FriendsTabHeaderSoRButton:SetStyle("Button")
 	FriendsTabHeaderSoRButtonIcon:SetDrawLayer('OVERLAY')
@@ -264,7 +265,7 @@ local function FriendsFrameStyle()
 	FriendsTabHeaderRecruitAFriendButtonIcon:SetDrawLayer('OVERLAY')
 	FriendsTabHeaderRecruitAFriendButtonIcon:SetTexCoord(unpack(_G.SVUI_ICON_COORDS))
 	FriendsTabHeaderRecruitAFriendButtonIcon:InsetPoints()
-	
+
 	FriendsFrameIgnoreScrollFrameScrollBar:SetStyle("!_Frame", "Model")
 	SV.API:Set("ScrollBar", FriendsFrameIgnoreScrollFrame, 4)
 	IgnoreListFrame:RemoveTextures()
@@ -278,9 +279,10 @@ local function FriendsFrameStyle()
 	ScrollOfResurrectionFrameNoteFrame:SetStyle("!_Frame")
 	ScrollOfResurrectionFrameTargetEditBox:SetStyle("!_Frame")
 	ScrollOfResurrectionFrame:SetStyle("!_Frame", 'Transparent')
-end 
---[[ 
-########################################################## 
+	]]--
+end
+--[[
+##########################################################
 MOD LOADING
 ##########################################################
 ]]--
