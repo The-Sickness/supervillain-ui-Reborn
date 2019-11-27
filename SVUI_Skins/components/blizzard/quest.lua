@@ -120,7 +120,7 @@ local function QuestFrameStyle()
 
 	SV.API:Set("Window", QuestLogPopupDetailFrame, true, true)
 	SV.API:Set("Window", QuestFrame, true, true)
-    
+
 	QuestLogPopupDetailFrameScrollFrameScrollBar:RemoveTextures(true)
 	QuestProgressScrollFrameScrollBar:RemoveTextures(true)
 	QuestDetailScrollFrameScrollBar:RemoveTextures(true)
@@ -218,14 +218,14 @@ local function QuestFrameStyle()
 		texture:SetSize(texture:GetWidth(), texture:GetHeight())
 		_G["QuestProgressItem"..j.."Count"]:SetDrawLayer("OVERLAY")
 	end
-
+--[[
 	QuestNPCModel:RemoveTextures()
 	QuestNPCModel:SetStyle("Model", "Frame")
 
 	QuestNPCModelTextFrame:RemoveTextures()
 	QuestNPCModelTextFrame:SetStyle("Frame", "Default")
 	QuestNPCModelTextFrame.Panel:SetPoint("TOPLEFT", QuestNPCModel.Panel, "BOTTOMLEFT", 0, -2)
-
+]]--
 	SV.API:Set("ScrollBar", QuestLogPopupDetailFrameScrollFrame, 5)
 	SV.API:Set("ScrollBar", QuestRewardScrollFrame)
 	SV.API:Set("ScrollBar", QuestGreetingScrollFrame)

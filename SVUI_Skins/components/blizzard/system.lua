@@ -718,7 +718,7 @@ local function SystemPanelQue()
 			SV.API:Set("ScrollBar", this)
 		end
 	end
-	
+
 	--print('test SystemPanelQue 2')
 	if(MacOptionsFrame) then
 		MacOptionsFrame:RemoveTextures()
@@ -768,13 +768,13 @@ local function SystemPanelQue()
 	--ReportPlayerNameDialogCancelButton:SetStyle("Button")
 
 	--print('test SystemPanelQue 4')
-	SideDressUpFrame:RemoveTextures(true)
-	SideDressUpFrame:SetSize(300, 400)
-	SideDressUpModel:RemoveTextures(true)
-	SideDressUpModel:SetAllPoints(SideDressUpFrame)
-	SideDressUpModel:SetStyle("!_Frame", "Model")
-	SideDressUpModelResetButton:SetStyle("Button")
-	SideDressUpModelResetButton:SetPoint("BOTTOM", SideDressUpModel, "BOTTOM", 0, 20)
+	--SideDressUpFrame:RemoveTextures(true)
+	--SideDressUpFrame:SetSize(300, 400)
+	--SideDressUpModel:RemoveTextures(true)
+	--SideDressUpModel:SetAllPoints(SideDressUpFrame)
+	--SideDressUpModel:SetStyle("!_Frame", "Model")
+	--SideDressUpModelResetButton:SetStyle("Button")
+	--SideDressUpModelResetButton:SetPoint("BOTTOM", SideDressUpModel, "BOTTOM", 0, 20)
 	SV.API:Set("CloseButton", SideDressUpModelCloseButton)
 	SV.API:Set("CloseButton", SideDressUpModelCloseButton)
 end

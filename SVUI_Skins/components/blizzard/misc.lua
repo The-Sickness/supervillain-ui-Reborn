@@ -189,7 +189,7 @@ local function MiscStyles()
 	if SV.db.Skins.blizzard.enable ~= true then
 		 return
 	end
-
+--[[
 	if(SV.db.Skins.blizzard.dressingroom) then
 		DressUpFrame:SetSize(500, 600)
 		SV.API:Set("Window", DressUpFrame, true, true)
@@ -208,7 +208,7 @@ local function MiscStyles()
 
 		SV.API:Set("CloseButton", DressUpFrameCloseButton, DressUpFrame.Panel)
 	end
-
+]]--
 	if(SV.db.Skins.blizzard.gossip) then
 		SV.API:Set("Window", GossipFrame, true, true)
 
@@ -438,16 +438,16 @@ local function MiscStyles()
 		OpenMailMoneyButton:SetStyle("Button")
 		OpenMailMoneyButtonIconTexture:SetTexCoord(unpack(_G.SVUI_ICON_COORDS))
 		OpenMailMoneyButtonIconTexture:InsetPoints()
-		
+
 		-- Add Open All Mail button
 		SV.API:Set("Button", OpenAllMail);
 		OpenAllMail:SetPoint("TOPRIGHT", MailFrame, -20, -30);
-		
+
 		-- Fix for mail title text
 		InboxTitleText:SetPoint("CENTER", MailFrame, "TOP", 0, -15);
 		SendMailTitleText:SetPoint("CENTER", MailFrame, "TOP", 0, -15);
 		OpenMailTitleText:SetPoint("CENTER", MailFrame, "TOP", 0, -15);
-		
+
 		for i = 1, INBOXITEMS_TO_DISPLAY do
 			local slot = _G["MailItem"..i]
 			if(slot) then
@@ -685,7 +685,7 @@ local function MiscStyles()
 		SV.API:Set("Window", TaxiFrame)
 		SV.API:Set("CloseButton", TaxiFrame.CloseButton)
 	end
-	
+
 	if (SV.db.Skins.blizzard.trade) then
 		TradeFrameInset:Die()
 		TradeRecipientItemsInset:Die()
