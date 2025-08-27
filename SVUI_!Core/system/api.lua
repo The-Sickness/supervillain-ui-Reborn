@@ -56,7 +56,15 @@ GET ADDON DATA
 ##########################################################
 ]]--
 local SV = select(2, ...)
-local L = SV.L;
+local L = SV.L or setmetatable({}, {__index = function(t, k) return k end})
+
+if not SV.NewPackage then
+    function SV:NewPackage(name, title)
+        local package = { Name = name, Title = title }
+        return package
+    end
+end
+
 local SVUILib = Librarian("Registry");
 local MOD = SV:NewPackage("API", L["API"]);
 --[[
@@ -1620,13 +1628,11 @@ MOD.Concepts["Window"] = function(self, adjustable, frame, altStyle, fullStrip, 
         frame:SetFrameLevel(1)
     end
     RemoveTextures(frame, fullStrip)
+    local name = frame:GetName()
     if(name and _G[name.."BtnCornerLeft"]) then
-        _G[name.."BtnCornerLeft"]:SetTexture("");
-		_G[name.."BtnCornerRight"]:SetTexture("");
-        _G[name.."ButtonBottomBorder"]:SetTexture("");
-    end
-    if (frame.NineSlice) then
-        frame.NineSlice:RemoveTextures(true);
+      _G[name.."BtnCornerLeft"]:SetTexture("");
+		  _G[name.."BtnCornerRight"]:SetTexture("");
+		  _G[name.."ButtonBottomBorder"]:SetTexture("");
     end
     self.Methods["Frame"](self, frame, (not adjustable), template, false, padding, xOffset, yOffset)
     if(frame.Inset) then

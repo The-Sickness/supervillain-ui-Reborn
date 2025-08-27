@@ -57,7 +57,7 @@ GET ADDON DATA
 ##########################################################
 ]]--
 local SV = select(2, ...)
-local L = SV.L
+local L = SV.L or setmetatable({}, {__index = function(t, k) return k end})
 local SVLib = _G.Librarian("Registry")
 local LSM = _G.LibStub("LibSharedMedia-3.0")
 local LDB = LibStub("LibDataBroker-1.1", true)
